@@ -21,9 +21,9 @@ int main()
 	list[1] = node(a[1], 1);
 	for (int i = 2; i <= n; i++)
 	{
-		while (head <= tail && list[tail].x <= a[i]) tail--;//ɾβ
-		list[++tail] = node(a[i], i);//�õ����ŽⲢ����
-		while (i - list[head].p >= m) head++;//ȥͷ
+		while (head <= tail && list[tail].x <= a[i]) tail--;//删尾
+		list[++tail] = node(a[i], i);//得到最优解并插入，若经由上一步则是覆盖
+		while (i - list[head].p >= m) head++;//换“头”
 		if (i >= m) printf("%d\n", list[head]);
 	}
 	return 0;
