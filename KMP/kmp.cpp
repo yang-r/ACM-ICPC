@@ -6,8 +6,7 @@
 
 using namespace std;
 
-
-
+//注意题目数据类型，不一定是字符串！！！ 
 void cal_next(char*str,int nex[]) {           //算出str的前缀和后缀相同的长度 存入next中 
 	int k = -1;                                //如next[0]=-1 不存在，next[1]=0 一个相同 
 	int len = strlen(str);
@@ -40,21 +39,18 @@ void kmp(char*str, char*ptr){
 			}
 			if (k== plen - 1) {
 				printf("%d\n", q - k + 1);     // 位置的输出，从1开始 
-				k = -1;
-				q = q - plen+1;          //得出匹配字符串，位置后移 
+				  k=next[k];        //得出匹配字符串，位置回到含有相同前缀的点开始比较 
 			}
 		}
 		//  输出子串的next 
 		for (int i = 0; i <strlen(ptr); i++) {
 			printf("%d ", next[i] + 1);
 		}
-		printf("\n");
-		
+		printf("\n");	
 }
 int main() {
 	char a[maxn],b[maxn];
 	gets_s(a);
-
 	gets_s(b);
 	kmp(a,b);
 
