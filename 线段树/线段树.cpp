@@ -1,12 +1,14 @@
 #include<cstdio>
 #include<iostream>
 #include<string.h>
+#define lson rt<<1
+#define rson rt<<1|1
 
 using namespace std;
 //注意数组大小
 //足够的空间 = 数据大小n的四倍。
 //实际上足够的空间 = （n向上扩充到最近的2的某个次方）的两倍。
-int t[50010*4];
+int t[50010 * 4];
 int ans;
 void build(int l, int r, int rt) {
 	if (l == r) {
@@ -16,9 +18,9 @@ void build(int l, int r, int rt) {
 	}
 	int m1 = 0;
 	m1 = (l + r) >> 1;
-	build(l, m1, rt << 1);
-	build(m1 + 1, r, rt << 1 | 1);
-	t[rt] = t[rt << 1] + t[rt << 1 | 1];
+	build(l, m1, lson);
+	build(m1 + 1, r, rson);
+	t[rt] = t[lson] + t[rson];
 	//	printf("[%d to %d] val is %d\n", l, r, t[rt]);
 }
 //单点更新
@@ -29,9 +31,9 @@ void update(int l, int r, int rt, int k, int c) {
 		return;
 	}
 	int m1 = (l + r) >> 1;
-	if (m1 >= k)update(l, m1, rt << 1, k, c);
-	else update(m1 + 1, r, rt << 1 | 1, k, c);
-	t[rt] = t[rt << 1] + t[rt << 1 | 1];
+	if (m1 >= k)update(l, m1, lson, k, c);
+	else update(m1 + 1, r, rson, k, c);
+	t[rt] = t[lson] + t[rson];
 	//cout << "区间[ " << l << ", " << r << "] " << "值为" <<t[rt]<<"  节点:"<<rt<<endl;
 }
 //区间查询
@@ -41,8 +43,8 @@ void query(int l, int r, int rt, int L, int R) {
 		return;
 	}
 	int m1 = (l + r) >> 1;
-	if (m1 >= L)query(l, m1, rt << 1, L, R);
-	if (m1<R) query(m1 + 1, r, rt << 1 | 1, L, R);
+	if (m1 >= L)query(l, m1, lson, L, R);
+	if (m1<R) query(m1 + 1, r, rson, L, R);
 	return;
 }
 

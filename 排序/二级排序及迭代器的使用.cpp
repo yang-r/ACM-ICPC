@@ -85,3 +85,30 @@ int main() {
 //	system("pause");
 	return 0;
 }
+
+//迭代器
+
+/*#include <iostream>
+using namespace std;
+#include <iterator>
+#include<vector>
+int main() {
+    int n,m; 
+    cin>>n>>m;  
+    vector<int> v1;
+for(int i=0;i<n;i++)v1.push_back(i+1);
+for(int i=0;i<m;i++){
+int x,y;
+cin>>x>>y;
+vector<int>::iterator it;//应该定义在for循环之外 
+for( it= v1.begin();it!= v1.end();it++) 
+if(*it==x)
+break;
+v1.erase(it);//先删除后添加 
+v1.insert(it+y,x);
+}
+for( int i=0;i<v1.size();i++){
+  cout<<v1[i]<<" ";
+}
+} 
+

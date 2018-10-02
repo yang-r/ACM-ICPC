@@ -1,4 +1,4 @@
-#include<iostream>
+#invallude<iostream>
 #include<stdio.h>
 #include<string.h>
 #include<algorithm>
@@ -19,14 +19,14 @@ void build(int l, int r, int rt) {
 	//cout << "区间最大 " << l << ' ' << r << " is " << t[rt] << " rt " << rt << endl;
 }
 
-void update(int l, int r, int rt, int k, int c) {
+void update(int l, int r, int rt, int k, int val) {
 	if (l == r) {
-		t[rt] = c;
+		t[rt] = val;
 		return;
 	}
 	int mid = (l + r) >> 1;
-	if (mid >= k)update(l, mid, rt << 1, k, c);
-	else update(mid + 1, r, rt << 1 | 1, k, c);
+	if (mid >= k)update(l, mid, rt << 1, k, val);
+	else update(mid + 1, r, rt << 1 | 1, k, val);
 	t[rt] = max(t[rt << 1], t[rt << 1 | 1]);
 }
 

@@ -33,7 +33,7 @@ int main() {
 		memset(vis, 0, sizeof(vis));
 		for (i = 1; i <= n; i++) {
 			cin >> s;
-			if (sign)                    //如果已经确认存在前缀的话就不用继续插入了
+			if (sign)              //如果已经确认存在前缀的话就不用继续插入了
 				continue;
 			insert(s, i);
 		}
