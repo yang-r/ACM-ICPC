@@ -86,3 +86,12 @@ int main() {
 
 	return 0;
 }
+/*
+
+		***不保险*** 
+　平方和这样来推：(a + c)2 = a2 + c2 + 2ac  ,
+ 即sum2[rt] = sum2[rt] + (r - l + 1) * c * c + 2 * sum1[rt] * c；
+
+　　立方和这样推：(a + c)3 = a3 + c3 + 3a(a2 + ac) , 
+即sum3[rt] = sum3[rt] + (r - l + 1) * c * c * c + 3 * c * (sum2[rt] + sum1[rt] * c)；
+*/ 

@@ -68,7 +68,7 @@ int query(int i, int t)
 		if (t >= a[2 * i].r - a[2 * i].rs + 1)
 			//因为t<=mid，看左子树，a[2*i].r-a[2*i].rs+1代表左子树右边连续区间的左边界值，
 			//如果t在左子树的右区间内，则要看右子树的左区间有多长并返回
-			return query(2 * i, t) + query(2 * i + 1, mid + 1);
+			return query(2 * i, t) + query(2 * i + 1, mid + 1);//点相加所以加1 
 		else
 			return query(2 * i, t);
 		//如果不在左子树的右边界区间内，则只需要看左子树
