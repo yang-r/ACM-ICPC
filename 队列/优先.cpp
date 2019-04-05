@@ -3,7 +3,8 @@
 #include<iostream>
 #include<functional>
 using namespace std;
-//当访问元素时，具有最高优先级的元素最先删除。优先队列具有最高级先出 （first in, largest out）的行为特征。
+//当访问元素时，具有最高优先级的元素最先删除。
+优先队列具有最高级先出 （first in, largest out）的行为特征。
 //默认从大到小自动排序 
 struct cmp {//运算符重载
 	bool operator ()(int &a, int &b) {

@@ -78,7 +78,7 @@ int main() {
 			//printf("k  %lld\n",k);
 			update(1, n, 1, b, k);
 		}
-
+		
 		if (x == 3) {
 			scanf("%lld%lld", &a, &b);
 			sum = query(1, n, 1, a, b);

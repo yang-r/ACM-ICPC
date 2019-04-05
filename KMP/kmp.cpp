@@ -12,12 +12,9 @@ void cal_next(char*str,int nex[]) {           //算出str的前缀和后缀相同的长度 存
 	int len = strlen(str);
 	nex[0] = -1;
 	for (int q = 1; q < len; q++) {
-		while (k > -1 && str[k + 1] != str[q]) {
+		while (k > -1 && str[k + 1] != str[q])
 				k = nex[k];
-		} 
-			if (str[k+1] == str[q]) {
-				k++;
-			}
+			if (str[k+1] == str[q])k++;
 			nex[q] = k;   
 	}
 
@@ -31,21 +28,19 @@ void kmp(char*str, char*ptr){
 		int k = -1;
 		int mark = 0;
 		for (int q = 0; q < slen; q++) {
-			while (k > -1 && ptr[k + 1] != str[q]) {
-				k = next[k];            //字符串当前位置不相同且有相同匹配的时候，回溯 
-			}
-			if (ptr[k + 1]==str[q]) {
-				k++;                     //相同则继续比较 
-			}
+			while (k > -1 && ptr[k + 1] != str[q]) 
+				k = next[k];       //字符串当前位置不相同且有相同匹配的时候，回溯 
+			
+			if (ptr[k + 1]==str[q]) 
+				k++;     //相同则继续比较 
 			if (k== plen - 1) {
 				printf("%d\n", q - k + 1);     // 位置的输出，从1开始 
-				  k=next[k];        //得出匹配字符串，位置回到含有相同前缀的点开始比较 
+				  k=next[k];    //得出匹配字符串，位置回到含有相同前缀的点开始比较 
 			}
 		}
 		//  输出子串的next 
-		for (int i = 0; i <strlen(ptr); i++) {
+		for (int i = 0; i <strlen(ptr); i++) 
 			printf("%d ", next[i] + 1);
-		}
 		printf("\n");	
 }
 int main() {
@@ -53,6 +48,5 @@ int main() {
 	gets_s(a);
 	gets_s(b);
 	kmp(a,b);
-
 	return 0;
 	}

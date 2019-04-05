@@ -44,7 +44,7 @@ void query(int l, int r, int rt, int L, int R) {
 	}
 	int m1 = (l + r) >> 1;
 	if (m1 >= L)query(l, m1, lson, L, R);
-	if (m1<R) query(m1 + 1, r, rson, L, R);
+	if (m1<R ) query(m1 + 1, r, rson, L, R);
 	return;
 }
 

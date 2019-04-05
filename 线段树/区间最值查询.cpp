@@ -1,7 +1,9 @@
-#invallude<iostream>
+#include<iostream>
 #include<stdio.h>
 #include<string.h>
 #include<algorithm>
+#define lson rt<<1
+#define rson rt<<1|1 
 using namespace std;
 int n, m;
 int t[200005 * 4];
@@ -12,9 +14,9 @@ void build(int l, int r, int rt) {
 		return;
 	}
 	int mid = (l + r) >> 1;
-	build(l, mid, rt << 1);
-	build(mid + 1, r, rt << 1 | 1);
-	t[rt] = max(t[rt << 1], t[rt << 1 | 1]);
+	build(l, mid, lson);
+	build(mid + 1, r, rson);
+	t[rt] = max(t[lson], t[rson]);
 	//存放的是区间的最值 
 	//cout << "区间最大 " << l << ' ' << r << " is " << t[rt] << " rt " << rt << endl;
 }
@@ -25,9 +27,9 @@ void update(int l, int r, int rt, int k, int val) {
 		return;
 	}
 	int mid = (l + r) >> 1;
-	if (mid >= k)update(l, mid, rt << 1, k, val);
-	else update(mid + 1, r, rt << 1 | 1, k, val);
-	t[rt] = max(t[rt << 1], t[rt << 1 | 1]);
+	if (mid >= k)update(l, mid, lson, k, val);
+	else update(mid + 1, r, rson, k, val);
+	t[rt] = max(t[lson], t[rson]);
 }
 
 //查询 
@@ -37,8 +39,8 @@ void query(int l, int r, int rt, int L, int R) {
 		return;
 	}
 	int mid = (l + r) >> 1;
-	if (mid >= L)query(l, mid, rt << 1, L, R);
-	if (mid < R)query(mid + 1, r, rt << 1 | 1, L, R);
+	if (mid >= L)query(l, mid, lson, L, R);
+	if (mid < R)query(mid + 1, r, rson, L, R);
 	return;
 }
 
@@ -48,8 +50,8 @@ int main() {
 	char x;
 	while (scanf("%d%d", &n, &m) != EOF) {
 		build(1, n, 1);
-		
- 		for (int i = 0; i <m; i++) {
+
+		for (int i = 0; i <m; i++) {
 			getchar();
 			scanf("%c", &x);
 			scanf("%d%d", &a, &b);

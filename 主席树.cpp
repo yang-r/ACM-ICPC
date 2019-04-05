@@ -61,8 +61,7 @@ int query(int l,int r,int x,int y,int k)//查询区间【x，y】中第小的数
 int main()
 {
     int n,m;
-    while(~scanf("%d%d",&n,&m))
-    {
+    while(~scanf("%d%d",&n,&m)){
         for(int i=1;i<=n;i++)
         {
             scanf("%d",&a[i]);

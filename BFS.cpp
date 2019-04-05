@@ -46,9 +46,9 @@ int bfs(int x, int y) {
 	int flag = 0;
 	int ans = -1;
 	while (!check.empty() && !flag) {
-		q  p= check.front();
+		q p= check.front();
 		check.pop();
-		if (mg[p.x1][p.y1] == 'E') {
+		if(mg[p.x1][p.y1] == 'E') {
 			ans = p.step;
 			break;
 		}
